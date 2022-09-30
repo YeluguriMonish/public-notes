@@ -1,0 +1,26 @@
+:PROPERTIES:
+:ID:       9dcb7b88-5cce-4f1a-b734-e4c9fe49cd4f
+:END:
+
+* Harness vs Spinnaker
+- harness can be used as a SaaS platform or self hosted, whereas spinnaker must be self hosted
+- spinnaker abstracts away multi-cloud deployments whereas, deployments to multiple cloud platforms must be explicitly defined in harness
+- generally speaking spinnaker is more complex and granular than harness which is more stream lined and intuitive
+- [[https://spinnaker.io/docs/guides/user/pipeline/pipeline-templates/][pipeline templates]] in spinnaker allow the user to store their pipeline configuration as json; [[https://docs.harness.io/article/1eishcolt3-harness-yaml-quickstart][harness pipelines can be defined as yaml files]]
+  * harness also has a feature called [[https://docs.harness.io/article/gvbaldmib5-create-pipeline-template][templates]] which allow you to create a standardized structure for pipelines through the UI that can be replicated and changed based on the application
+- both tools provide out of the box canary, rolling, blue/green, and custom deployments
+- [[https://spinnaker.io/docs/reference/halyard/secrets/][secrets in spinnaker]] are stored in an encrypted format by the user in Halconfig; [[https://docs.harness.io/article/osfw70e59c-add-use-text-secrets][secrets in harness]] can be defined through the UI and are stored by the platform
+- spinnaker is available as a SaaS platform through [[https://www.armory.io/products/continuous-deployment-managed/][armory]]
+- [[https://spinnaker.io/docs/setup/other_config/features/script-stage/][spinnaker]] and [[https://docs.harness.io/article/k5lu0u6i1i-using-shell-scripts][harness]] allow the use of scripts as a stage of the pipeline which theoretically could provide any step not explicitly defined in the tool
+- [[https://docs.harness.io/article/e6s32ec7i7-connect-to-jira][jira integration]] seems like a first class citizen in harness; jira integration seems possible in spinnaker but requires either API calls to jira or additional plugins
+- [[https://docs.harness.io/article/r5ytrnpcgr-audit-trail][audit trails]] in harness provide a UI to view a history of changes to any entity; no comparable feature seems to exist in spinnaker
+- [[https://docs.harness.io/category/9mefqceij0-cv-category][harness]] and [[https://spinnaker.io/docs/setup/other_config/monitoring/][spinnaker]] both have integrations w/ deployment metrics tools like prometheus and datadog
+  * integration w/ some of the metric tools in spinnaker seems to require plugins from [[https://docs.armory.io/armory-enterprise/armory-admin/observe/prometheus-monitoring/][armory]]
+  * harness and spinnaker have automated rollbacks
+    - harness can [[https://docs.harness.io/article/3xhqq9xllp-verify-deployments-with-the-verify-step][trigger a rollback]] on failed verification; need to see if spinnaker can trigger a rollback based on monitoring data
+    - harness claims they [[https://docs.harness.io/article/3xhqq9xllp-verify-deployments-with-the-verify-step][apply ML]] to flag anomalies in future deployments
+- [[https://docs.harness.io/category/jcu7twh2t6-terraform-category][harness]] has integration with terraform; need to check for [[https://docs.opsmx.com/additional-resources/code-labs/how-to-create-terraform-webhook-stage-in-spinnaker][spinnaker]]
+  * harness also integrates with cloud formation, but I do not think we use it
+
+#  LocalWords:  JPMC repo eks skaffold SaaS json Halconfig jira prometheus
+#  LocalWords:  datadog
