@@ -1,0 +1,25 @@
+** Important Points
+- built in [[https://docs.harness.io/article/3xhqq9xllp-verify-deployments-with-the-verify-step][continuous verification]]
+  * capable of triggering rollback on failed verification
+  * [[https://docs.harness.io/article/1e536z41av-supported-platforms-and-technologies#verification][supported metric and logging platforms]]
+    [[./images/metrics.png]]
+- capable of infrastructure management through [[https://docs.harness.io/category/jcu7twh2t6-terraform-category][terraform]]
+  * allows for dynamic provisioning of resources during pipeline execution
+- [[https://docs.harness.io/article/hngrlb7rd6-harness-secret-manager-overview][secret management]] is built into the harness UI
+  * [[https://docs.harness.io/article/osfw70e59c-add-use-text-secrets][adding and referencing secrets]]
+  * can also use external secret manager through delegate
+- [[https://docs.harness.io/article/r5ytrnpcgr-audit-trail][audit trails]]
+  * keeps track of all changes over the past two years (can request more)
+  * allows you to view yaml diffs
+    [[./images/audit-trail.png]]
+- harness has [[https://docs.harness.io/article/6tl8zyxeol-template][templates]] which allow you to create reusable steps, stages, and pipelines through the UI
+  * spinnaker does have pipeline as code which would help with replicability, but nothing equivalent in terms of accomplishing this through the UI
+  * templates in harness can be either [[https://docs.harness.io/article/1re7pz9bj8-use-a-template#option_copy_to_pipeline][copied]] or used
+    - steps and stages 'copied' from a template do not contain a reference to the template and allows you to modify the parameters of the step or stage
+    - steps and stages 'used' from a template contain a reference to the template and the parameters are controlled by the template
+      * pipeline needs to be saved to apply changes to referenced templates
+      * all parameters can be set as runtime inputs or a [[https://docs.harness.io/article/f3450ye0ul-add-a-variable][variable]] value in the template
+    - templates in harness have [[https://docs.harness.io/article/6tl8zyxeol-template#versioning][versioning]]
+      * a specific version of a template can be marked as stable and you can specify in your pipeline that you always want to use the version of the step, stage or pipeline template that is tagged as stable
+
+
